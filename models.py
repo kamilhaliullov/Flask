@@ -31,10 +31,9 @@ class Books(db.Model):
     user = db.relationship('User', backref=db.backref('books_list', lazy=True))
     # ссылка на модель (класс) выше
     # для User возвращает список его новостей по .user_books
-    link = db.Column(db.String(80), unique=False, nullable=True)
 
     def __repr__(self):
-        return '<Books {} {} {} {}>'.format(self.id, self.title, self.user_id, self.link)
+        return '<Books {} {} {}>'.format(self.id, self.title, self.user_id)
 
     @staticmethod
     def add(title, content, user):
@@ -55,7 +54,6 @@ class Books(db.Model):
             'id': self.id,
             'title': self.title,
             'content': self.content,
-            'user_id': self.user_id,
-            'link': self.link
+            'user_id': self.user_id
         }
 
