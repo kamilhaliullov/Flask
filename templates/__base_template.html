@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous"
+    >
+    <title>{{title}}</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a href="/" class="navbar-brand">Главная</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a href="/" class="nav-link">Меню1</a>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link">Меню2</a>
+            </li>
+        </ul>
+    </div>
+    {% if auth_user %}
+    {{ auth_user.login }} (<a href="/logout">Выйти</a>)
+    {% else %}
+    <div class="p-3">
+        <a href="/login">Войти</a>
+    </div>
+    <div class="p-3">
+        <a href="/user/create">Зарегистрироваться</a>
+    </div>
+    {% endif %}
+</nav>
+<div class="container pt-5">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

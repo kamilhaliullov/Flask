@@ -1,0 +1,29 @@
+{% extends '__base_template.html' %}
+
+{% block content %}
+<form
+        action="/user/create"
+        method="post"
+        enctype="multipart/form-data"
+
+        class="card"
+>
+    {% if has_error %}
+        <div class="alert alert-danger">Пользователь с таким именем уже существует</div>
+        {% endif %}
+    {{ form.hidden_tag() }}
+    <div class="card-body">
+        <div class="form-group">
+            <label for="{{ form.username.id }}">{{ form.username.label }}</label>
+            {{ form.username(class_="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password.id }}">{{ form.password.label }}</label>
+            {{ form.password(class_="form-control") }}
+        </div>
+        {{ form.submit(class_="btn btn-primary") }}
+    </div>
+</form>
+{% endblock %}
+
+
